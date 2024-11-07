@@ -58,45 +58,115 @@ The `CircularTracker` component accepts the following props:
 | `background`            | `string`                                  | `#eef2f5`     | The background color of the progress arc.                                   |
 | `hideBall`              | `boolean`                                 | `false`       | Whether to hide the ball at the end of the progress arc.                    |
 | `inverted`              | `boolean`                                 | `false`       | Whether to invert the progress direction (anti-clockwise).                  |
+| `textColor`             | `string`                                  | `#309E3A`     | The color of the progress value text.                                       |
 
 ## Example
 
 Here's a more detailed example demonstrating various props:
 
+### Default Example
+
 ```tsx
-import React from 'react';
-import { CircularTracker } from 'react-circular-tracker';
+<CircularTracker
+  progress={93}
+  isPercentage={true}
+  ballStrokeWidth={14}
+  fontSize="36"
+  fontWeight={"bold"}
+  className="default-tracker"
+  gradient={[
+    { stop: 0, color: "#059669" }, // Emerald-600
+    { stop: 1, color: "#047857" }, // Emerald-700
+  ]}
+  centerBackground="rgba(16, 185, 129, 0.1)"
+  textColor="#059669"
+/>
+```
 
-const App = () => (
-  <div>
-    <CircularTracker
-      progress={75}
-      total={100}
-      isPercentage={true}
-      strokeWidth={6}
-      ballStrokeWidth={10}
-      transitionDuration={1}
-      transitionTimingFunction="ease-in-out"
-      hideValue={false}
-      gradient={[
-        { stop: 0, color: '#ff0000' },
-        { stop: 1, color: '#00ff00' },
-      ]}
-      subtitle="Loading..."
-      style={{ margin: '20px' }}
-      className="custom-progress"
-      suffix="%"
-      centerBackground="#ffffff"
-      fontWeight="normal"
-      fontSize="20px"
-      background="#cccccc"
-      hideBall={false}
-      inverted={true}
-    />
-  </div>
-);
+### Inverted Example
 
-export default App;
+```tsx
+<CircularTracker
+  progress={-60}
+  total={100}
+  isPercentage={true}
+  strokeWidth={4}
+  ballStrokeWidth={12}
+  transitionDuration={0.5}
+  transitionTimingFunction="ease"
+  background="rgba(255, 87, 51, 0.2)"
+  hideBall={false}
+  hideValue={false}
+  gradient={[
+    { stop: 0, color: "#E11D48" }, // Rose-600
+    { stop: 1, color: "#BE123C" }, // Rose-700
+  ]}
+  subtitle=""
+  className="inverted-tracker"
+  suffix="pts"
+  centerBackground="transparent"
+  fontWeight="bold"
+  fontSize="24px"
+  inverted={true}
+  textColor="#FF5733"
+/>
+```
+
+### Loading Example
+
+```tsx
+<CircularTracker
+  progress={60}
+  total={100}
+  isPercentage={true}
+  strokeWidth={4}
+  ballStrokeWidth={12}
+  transitionDuration={0.5}
+  transitionTimingFunction="ease"
+  background="#eef2f5"
+  hideBall={false}
+  hideValue={false}
+  gradient={[
+    { stop: 0, color: "#FBBF24" }, // Amber-400
+    { stop: 1, color: "#F59E0B" }, // Amber-500
+  ]}
+  subtitle="Loading..."
+  className="loading-tracker"
+  suffix="%"
+  centerBackground="transparent"
+  fontWeight="bold"
+  fontSize="24px"
+  textColor="#FFC300"
+/>
+```
+
+### Steps Example
+
+```tsx
+<CircularTracker
+  progress={3}
+  total={5}
+  isPercentage={false}
+  strokeWidth={4}
+  ballStrokeWidth={12}
+  transitionDuration={0.5}
+  transitionTimingFunction="ease"
+  background="#eef2f5"
+  hideBall={false}
+  hideValue={false}
+  gradient={[
+    { stop: 0, color: "#7C3AED" }, // Violet-600
+    { stop: 1, color: "#6D28D9" }, // Violet-700
+  ]}
+  subtitle="STEPS"
+  style={{}}
+  className="steps-tracker"
+  suffix=""
+  centerBackground="transparent"
+  fontWeight="bold"
+  fontSize="24px"
+  textColor="#8E44AD"
+/>
 ```
 
 ## Storybook

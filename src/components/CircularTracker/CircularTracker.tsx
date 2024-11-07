@@ -4,22 +4,23 @@ export interface TrackerProps {
   progress?: number | null; // Allow null to represent unknown progress
   total?: number; // Total number (for the "X de Y" display)
   isPercentage?: boolean; // Percentage or Steps mode
-  strokeWidth?: number;
-  ballStrokeWidth?: number;
-  transitionDuration?: number;
-  transitionTimingFunction?: string;
-  hideValue?: boolean;
-  gradient?: Array<{ stop: number; color: string }>;
-  subtitle?: string;
-  style?: React.CSSProperties;
-  className?: string;
-  suffix?: string;
-  centerBackground?: string;
-  fontWeight: string;
-  fontSize: string;
-  background?: string;
-  hideBall?: boolean;
+  strokeWidth?: number; // Width of the progress bar
+  ballStrokeWidth?: number; // Width of the ball at the end of the progress bar
+  transitionDuration?: number; // Duration of the transition animation
+  transitionTimingFunction?: string; // Timing function for the transition animation
+  hideValue?: boolean; // Hide the value display
+  gradient?: Array<{ stop: number; color: string }>; // Gradient colors for the progress bar
+  subtitle?: string; // Subtitle text
+  style?: React.CSSProperties; // Additional styles
+  className?: string; // Additional class name
+  suffix?: string; // Suffix for the value display (e.g., "%")
+  centerBackground?: string; // Background color for the center of the tracker
+  fontWeight: string; // Font weight for the value display
+  fontSize: string; // Font size for the value display
+  background?: string; // Background color for the tracker
+  hideBall?: boolean; // Hide the ball at the end of the progress bar
   inverted?: boolean; // New prop to handle inverted progress
+  textColor?: string; // New prop to handle text color
 }
 
 function CircularTracker({
@@ -45,6 +46,7 @@ function CircularTracker({
   fontWeight = "bold", // Default font weight
   fontSize = "24px", // Default font size
   inverted = false, // Default to false for normal progress
+  textColor = "#309E3A", // Default text color
 }: TrackerProps) {
   const width = 200;
   const height = 200;
@@ -161,7 +163,7 @@ function CircularTracker({
             textAnchor="middle"
             dominantBaseline="central"
             style={{ fontSize, fontWeight }} // Apply fontSize and fontWeight directly as inline styles
-            fill="#309E3A"
+            fill={textColor}
             data-testid="progress-ball"
           >
             {displayText}
@@ -176,7 +178,7 @@ function CircularTracker({
             textAnchor="middle"
             dominantBaseline="central"
             fontSize="16"
-            fill="#309E3A"
+            fill={textColor}
           >
             {subtitle}
           </text>

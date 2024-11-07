@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
-import CirclcleTracker, { TrackerProps } from "./tracker";
+import CirclcleTracker, { TrackerProps } from "./CircularTracker";
 
 export default {
   title: "Components/CircularTracker",
