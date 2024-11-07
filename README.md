@@ -1,4 +1,4 @@
-# BinaryLeo CircularTracker
+# React Circular Tracker
 
 A customizable and reusable circular progress tracker component for React.JS.
 
