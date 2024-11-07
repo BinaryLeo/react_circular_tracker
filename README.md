@@ -2,6 +2,8 @@
 
 A customizable and reusable circular progress tracker component for React.JS.
 
+![Circular Tracker Demo](https://github.com/BinaryLeo/react_circular_tracker/blob/main/assets/demo.png?raw=true)
+
 ## Installation
 
 You can install the package via npm:
