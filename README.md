@@ -181,13 +181,60 @@ npm run storybook
 
 This will start Storybook and open it in your default web browser. You can see different examples of the `CircularTracker` component and interact with its props.
 
+## Contributing
+
+Contributions are welcome! Please follow these steps to contribute:
+
+### Opening an Issue
+
+1. Go to the [Issues](https://github.com/BinaryLeo/react_circular_tracker/issues) page.
+2. Click on the "New Issue" button.
+3. Provide a clear and descriptive title for the issue.
+4. Describe the issue in detail, including steps to reproduce, expected behavior, and any relevant screenshots or code snippets.
+
+### Submitting a Pull Request
+
+1. Fork the repository by clicking the "Fork" button on the repository page.
+2. Clone your forked repository to your local machine:
+   ```sh
+   git clone https://github.com/your-username/react_circular_tracker.git
+   ```
+3. Create a new branch for your feature or bugfix:
+   ```sh
+   git checkout -b feature-or-bugfix-name
+   ```
+4. Make your changes and commit them with a clear and descriptive commit message:
+   ```sh
+   git commit -m "Description of the changes"
+   ```
+5. Push your changes to your forked repository:
+   ```sh
+   git push origin feature-or-bugfix-name
+   ```
+6. Open a pull request from your forked repository to the main repository. Provide a clear and descriptive title and description for your pull request.
+
+### Running the Project Locally
+
+1. Clone the repository to your local machine:
+   ```sh
+   git clone https://github.com/BinaryLeo/react_circular_tracker.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd react_circular_tracker
+   ```
+3. Install the dependencies:
+   ```sh
+   npm install
+   ```
+   4. Start the Storybook development server:
+   ```sh
+   npm start
+   ```
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request for any changes.
 
 ## Author
 
