@@ -15,12 +15,15 @@ export interface TrackerProps {
   className?: string; // Additional class name
   suffix?: string; // Suffix for the value display (e.g., "%")
   centerBackground?: string; // Background color for the center of the tracker
-  fontWeight: string; // Font weight for the value display
-  fontSize: string; // Font size for the value display
+  fontWeight?: string; // Font weight for the value display
+  fontSize?: string; // Font size for the value display
   background?: string; // Background color for the tracker
   hideBall?: boolean; // Hide the ball at the end of the progress bar
-  inverted?: boolean; // New prop to handle inverted progress
-  textColor?: string; // New prop to handle text color
+  inverted?: boolean; // New prop to handle inverted progress (Clockwise or Counter-clockwise)
+  textColor?: string; // New prop to handle text color of the value display
+  icon?: React.ReactNode; // New prop to handle icon component. You can use any React component as an icon
+  iconContainerSize?: number; // New prop to define icon container size. As default, it's 100px
+  roundedBorders?: boolean; // New prop to handle rounded borders in the progress bar
 }
 
 function CircularTracker({
@@ -47,6 +50,9 @@ function CircularTracker({
   fontSize = "24px", // Default font size
   inverted = false, // Default to false for normal progress
   textColor = "#309E3A", // Default text color
+  icon, // New icon prop
+  iconContainerSize = 100, // Default icon container size
+  roundedBorders = false, // Default to false for normal borders
 }: TrackerProps) {
   const width = 200;
   const height = 200;
@@ -88,6 +94,10 @@ function CircularTracker({
       progress === null ? `? de ${total}` : `${progress} de ${total}`; // Show "X de Y" (e.g., "3 de 5")
   }
 
+  // Calculate icon dimensions based on 80% of the iconContainerSize
+  const iconWidth = iconContainerSize * 0.8;
+  const iconHeight = iconContainerSize * 0.8;
+
   return (
     <div
       className={className}
@@ -126,6 +136,7 @@ function CircularTracker({
           stroke={background}
           strokeWidth={strokeWidth}
           fill="none"
+          strokeLinecap={roundedBorders ? "round" : "butt"} // Conditionally add strokeLinecap
         />
 
         {/* Center background circle */}
@@ -137,6 +148,7 @@ function CircularTracker({
           stroke={`url(#gradient-${unique})`}
           strokeWidth={strokeWidth}
           fill="none"
+          strokeLinecap={roundedBorders ? "round" : "butt"} // Conditionally add strokeLinecap
           style={{
             transition: `stroke-dasharray ${transitionDuration}s ${transitionTimingFunction}`,
           }}
@@ -155,8 +167,8 @@ function CircularTracker({
           />
         )}
 
-        {/* Value display */}
-        {!hideValue && (
+        {/* Value display or Icon */}
+        {!hideValue && !icon && (
           <text
             x="50%"
             y="50%"
@@ -182,6 +194,28 @@ function CircularTracker({
           >
             {subtitle}
           </text>
+        )}
+
+        {/* Icon */}
+        {icon && (
+          <foreignObject
+            x={(width - iconWidth) / 2}
+            y={(height - iconHeight) / 2}
+            width={iconWidth}
+            height={iconHeight}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              {icon}
+            </div>
+          </foreignObject>
         )}
       </svg>
     </div>

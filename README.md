@@ -61,6 +61,9 @@ The `CircularTracker` component accepts the following props:
 | `hideBall`              | `boolean`                                 | `false`       | Whether to hide the ball at the end of the progress arc.                    |
 | `inverted`              | `boolean`                                 | `false`       | Whether to invert the progress direction (anti-clockwise).                  |
 | `textColor`             | `string`                                  | `#309E3A`     | The color of the progress value text.                                       |
+| `icon`                  | `React.ReactNode`                         | `null`        | Icon component to display instead of the value.                             |
+| `iconContainerSize`     | `number`                                  | `100`         | Size of the icon container.                                                 |
+| `roundedBorders`        | `boolean`                                 | `false`       | Rounded borders for the progress bar.                                       |
 
 ## Example
 
@@ -85,7 +88,7 @@ Here's a more detailed example demonstrating various props:
 />
 ```
 
-### Inverted Example
+### Anti-clockwise
 
 ```tsx
 <CircularTracker
@@ -171,6 +174,32 @@ Here's a more detailed example demonstrating various props:
 />
 ```
 
+### Icon Example - NEW
+
+You can also use custom icons or any other icon library:
+
+```tsx
+import { ArrowUp } from 'lucide-react';
+
+const App = () => (
+  <CircularTracker
+    progress={93}
+    isPercentage={true}
+    hideBall
+    strokeWidth={8}
+    fontSize="36"
+    fontWeight={"bold"}
+    className="default-tracker"
+    gradient={[
+      { stop: 0, color: "#059669" }, // Emerald-600
+      { stop: 1, color: "#047857" }, // Emerald-700
+    ]}
+    roundedBorders
+    icon={<ArrowUp size={80} />}
+  />
+);
+```
+
 ## Storybook
 
 You can view and interact with the `CircularTracker` component in Storybook. To start Storybook, run the following command:
@@ -227,7 +256,7 @@ Contributions are welcome! Please follow these steps to contribute:
    ```sh
    npm install
    ```
-   4. Start the Storybook development server:
+4. Start the Storybook development server:
    ```sh
    npm start
    ```
