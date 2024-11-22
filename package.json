@@ -1,6 +1,6 @@
 {
   "name": "react-circular-tracker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A customizable circular progress tracker component for React",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
